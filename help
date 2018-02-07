@@ -1,0 +1,6 @@
+define :foo do
+  play 50
+  sleep 1
+  play 55
+  sleep 2
+end 
