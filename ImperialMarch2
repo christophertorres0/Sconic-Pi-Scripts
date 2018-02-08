@@ -1,0 +1,59 @@
+# NAME OF SONG: The Imperial March
+# SHEET MUSIC: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
+# BPM USED: https://songbpm.com/imperial-march?q=imperial%20march
+
+use_bpm 95
+s=0.25
+a= 1
+define :firstPart do
+  use_synth :saw
+  3. times do
+    play :G4
+    sleep 1
+  end
+  play :E4
+  sleep 3*s
+  play :B4
+  sleep s
+  play :g4
+  sleep 4*s
+  play :e4
+  sleep 3*s
+  play :b4
+  sleep s
+end
+2. times do
+  firstPart
+end
+live_loop :bass do
+  with_fx :flanger do
+    sample :bass_thick_c, rate: 0.5, cutoff: 70
+    sleep 2*s
+  end
+end
+live_loop :fullMarch do
+  firstPart
+  play :g4
+  sleep 4*s
+  3. times do
+    play :d5
+    sleep 4*s
+  end
+  play :e5
+  sleep 3*s
+  play :b4
+  sleep s
+  play :g4
+  sleep 4*s
+  play :e4
+  sleep 3*s
+  play :b4
+  sleep s
+  play :g4
+  sleep 4*s
+  with_fx :flanger do
+    sample :drum_tom_hi_hard, amp:a
+  end
+  sleep 4*s
+  a= a+1
+end
