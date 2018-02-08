@@ -9,7 +9,7 @@ define :firstPart do
   use_synth :saw
   3. times do
     play :G4
-    sleep 1
+    sleep 4*s
   end
   play :E4
   sleep 3*s
