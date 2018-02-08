@@ -1,8 +1,8 @@
 #Coding Efficiency Challenge 2
 use_synth :piano
-x=21
-87. times do
-  play x
-  sleep 0.25
-  x=(x+1)
+x=21 #the first note of the piano is A0 which is number 21. So I stared with it
+87. times do #the piano ends C8 which is 108. The distance between 21 to 108 is 87. So i am looping it 87 times
+  play x #its gonna x which will start with the lowest sound
+  sleep 0.25 #it will sleep/pause for 0.25
+  x=(x+1) #as the loop ends, i am going to add 1 more bumber to x so it plays the next sound until it reaches 108
 end
