@@ -5,6 +5,7 @@
 use_bpm 95
 s=0.25
 a= 1
+#plays for 4 seconds
 define :firstPart do
   use_synth :saw
   3. times do
@@ -22,6 +23,7 @@ define :firstPart do
   play :b4
   sleep s
 end
+#this is 8 seconds
 2. times do
   firstPart
 end
@@ -55,5 +57,5 @@ live_loop :fullMarch do
     sample :drum_tom_hi_hard, amp:a
   end
   sleep 4*s
-  a= a+1
+  a= a+1 #makes  the amp louder by 1 every time it loops
 end
