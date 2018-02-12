@@ -1,0 +1,66 @@
+# NAME OF SONG: The Imperial March
+# SHEET MUSIC: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
+# BPM USED: https://songbpm.com/imperial-march?q=imperial%20march
+
+use_bpm 95
+s=0.25 #the variable "s" is for the sleep codes. This is assigned to each sleep code in the song so I am able to change the sleep time of all at one time and it won't sound weird.
+a= 0.5 # the variable "a" is for the amplitude for the samples
+#This function plays the first part of the Imperial March song
+define :firstPart do
+  use_synth :saw
+  3. times do
+    play :G4
+    sleep 4*s #each sleep code is going to be mulitplied by "s" which is 0.25 to get the right sleep time 
+  end
+  play :E4
+  sleep 3*s
+  play :B4
+  sleep s
+  play :g4
+  sleep 4*s
+  play :e4
+  sleep 3*s
+  play :b4
+  sleep s
+end
+#I called this function to play 2 times by the function name "firstPart"
+2. times do
+  firstPart
+end
+#After the function "firstPart" plays 2 times, the live loop "bass" will play infinitely
+live_loop :bass do
+  with_fx :flanger do
+    sample :bass_thick_c, rate: 0.5, cutoff: 70
+    sleep 2*s
+  end
+end
+#this live loop "fullMarch" will also start playing the same time as the "bass" loop and will play infinitely
+live_loop :fullMarch do
+  #the function "firstPart" will start playing then the rest of the song will be played
+  firstPart
+  play :g4
+  sleep 4*s
+  3. times do
+    play :d5
+    sleep 4*s
+  end
+  play :e5
+  sleep 3*s
+  play :b4
+  sleep s
+  play :g4
+  sleep 4*s
+  play :e4
+  sleep 3*s
+  play :b4
+  sleep s
+  play :g4
+  sleep 4*s
+  #at the end of the song, the tom high drum will play
+  with_fx :flanger do
+    sample :drum_tom_hi_hard, amp:a #the amp goes with the value "a" variable. It starts with 0.5 and gradually gets louder as the loop loops through
+  end
+  sleep 4*s
+  #at the end of the loop, the variable "a" will add 0.5 to it. 
+  a= a+0.5
+end
