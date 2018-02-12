@@ -4,13 +4,13 @@
 
 use_bpm 95
 s=0.25 #the variable "s" is for the sleep codes. This is assigned to each sleep code in the song so I am able to change the sleep time of all at one time and it won't sound weird.
-a= 0.5 # the variable "a" is for the amplitude for the samples
-#This function plays the first part of the Imperial March song
+a= 0.5 # the variable "a" is for the amplitude for the assigned samples
+#This function defines the first part of the Imperial March song
 define :firstPart do
   use_synth :saw
   3. times do
     play :G4
-    sleep 4*s #each sleep code is going to be mulitplied by "s" which is 0.25 to get the right sleep time 
+    sleep 4*s #each sleep code is going to be mulitplied by "s" which is 0.25 to get the right sleep time
   end
   play :E4
   sleep 3*s
@@ -61,6 +61,6 @@ live_loop :fullMarch do
     sample :drum_tom_hi_hard, amp:a #the amp goes with the value "a" variable. It starts with 0.5 and gradually gets louder as the loop loops through
   end
   sleep 4*s
-  #at the end of the loop, the variable "a" will add 0.5 to it. 
+  #at the end of the loop, the variable "a" will add 0.5 to it making it louder as the loop keeps repeating.
   a= a+0.5
 end
