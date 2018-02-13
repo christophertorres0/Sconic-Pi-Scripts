@@ -4,28 +4,25 @@ use_bpm 160
 use_synth :saw
 #I used an array to put all the notes together since there is common notes in the melody. So instead of saying play something multiple times, it would just be written once and I jsut call it with the index number 0
 stranger =[:c2, :e2, :g2, :b2, :c3]
+index = 0
+index2= 4
 # the array list starts from 0 with the note :c2 and goes to 4
 live_loop :main_theme do
   with_fx :distortion do
     # First set of eighth notes
-    play stranger[0] # 0 is the first value of the array "stranger" which will play
-    sleep 0.5
-    play stranger[1]
-    sleep 0.5
-    play stranger[2]
-    sleep 0.5
-    play stranger[3]
-    sleep 0.5
-    
+    4. times do
+      play stranger[index] # 0 is the first value of the array "stranger" which will play
+      sleep 0.5
+      index= index+1
+    end
     # Second set of eigth notes
-    play stranger[4]
-    sleep 0.5
-    play stranger[3]
-    sleep 0.5
-    play stranger[2]
-    sleep 0.5
-    play stranger[1]
-    sleep 0.5
+    4. times do
+      play stranger[index2]
+      sleep 0.5
+      index2 = index2 -1
+    end
+    index=0
+    index2 = 4
   end
 end
 
