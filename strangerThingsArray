@@ -11,16 +11,17 @@ live_loop :main_theme do
   with_fx :distortion do
     # First set of eighth notes
     4. times do
-      play stranger[index] # 0 is the first value of the array "stranger" which will play
+      play stranger[index] #the note it is going to play is the variable 0 so the first note on the array "stranger"
       sleep 0.5
-      index= index+1
+      index= index+1 #the initial index number is 0 but I want to add 1 more note to play the next note, this goes on for 4 times
     end
     # Second set of eigth notes
     4. times do
-      play stranger[index2]
+      play stranger[index2] #the variable index 2 is 4 which is the note it will play first.
       sleep 0.5
-      index2 = index2 -1
+      index2 = index2 -1 #the number on the variable index2 will decrease 1 every time for 4 times.
     end
+    #at the end of each 8 counts, the variables are going to reset back to 0 and 4.
     index=0
     index2 = 4
   end
