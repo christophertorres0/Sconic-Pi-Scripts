@@ -1,16 +1,14 @@
 # NAME OF SONG: The Imperial March
 # SHEET MUSIC: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
 # BPM USED: https://songbpm.com/imperial-march?q=imperial%20march
-
 use_bpm 95
 s=0.25 #the variable "s" is for the sleep codes. This is assigned to each sleep code in the song so I am able to change the sleep time of all at one time and it won't sound weird.
 a= 0.5 # the variable "a" is for the amplitude for the assigned samples
-#This function defines the first part of the Imperial March song
 first = [:g4, :g4, :g4, :e4, :b4, :g4, :e4, :b4]
 sleep = [4*s, 4*s, 4*s, 3*s, s, 4*s, 3*s, s]
-index= 0
+index= 0 #this is the values for the play and sleep to play in the function "firstPart"
 #each sleep code is going to be mulitplied by "s" which is 0.25 to get the right sleep time
-define :firstPart do
+define :firstPart do #This function defines the first part of the Imperial March song
   use_synth :saw
   8. times do
     play first[index] #"first" is the array with all my notes for the first part of my song. Index is the value of 0 for that variable. I say play the array name then the value or position of the first note which is :g4.
