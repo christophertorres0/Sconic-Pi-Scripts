@@ -1,0 +1,38 @@
+#CODE BLOCK 1
+#this one keeps playing the same sound because i is set outside of the loop
+=begin
+i = rrand(50, 95)
+#set variable i to a random float
+#between 50 to 95
+loop do
+  play i
+  print i
+  #play i and prints it value to the screen
+  sleep 0.5
+=end
+
+#CODE BLOCK 2
+=begin
+loop do
+  i = rrand(50, 95)
+  #i is set randomly from 50 to 95
+  #its in the loop so there is a different i value playing everytime to loop repeats
+  play i
+  print i
+  sleep 0.5
+=end
+
+#CODE BLOCK 3
+=begin
+loop do 
+  sample :perc_bell
+  sleep rrand(0.2, 2) #the sleep value is ramdomly chosen from 0.2 to 2 beats
+=end
+
+#CODE BLOCK 4
+=begin
+loop do 
+  sample :perc_bell, rate: (rrand 0.125, 1.5) 
+ sleep rrand(0.2, 2) #radomly choosing a sleep time from 0.2 to 2
+#rate is randomized from 0.125 to 1.5
+=end
