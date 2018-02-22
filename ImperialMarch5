@@ -57,7 +57,7 @@ live_loop :fullMarch do
   sleep 4*s
   #at the end of the song, the tom high drum will play
   with_fx :flanger do
-    r = (rrand 0.5, 1.5)
+    r = (rrand 0.25, 1.5)
     sample :drum_tom_hi_hard, rate:r ,amp:a
     #the amp goes with the value "a" variable. It starts with 0.5 and gradually gets louder as the loop loops through
     print r
