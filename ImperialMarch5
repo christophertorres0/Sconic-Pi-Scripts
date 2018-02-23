@@ -11,8 +11,9 @@ sleep = [4*s, 4*s, 4*s, 3*s, s, 4*s, 3*s, s]
 index= 0
 #this is the values for the play and sleep to play in the function "firstPart"
 #each sleep code is going to be mulitplied by "s" which is 0.25 to get the right sleep time
-define :firstPart do #This function defines the first part of the Imperial March song
-  use_synth :saw
+#This function below defines the first part of the Imperial March song
+define :firstPart do
+  use_synth :prophet
   8. times do
     play first[index]
     #"first" is the array with all my notes for the first part of my song. Index is the value of 0 for that variable. I say play the array name then the value or position of the first note which is :g4.
@@ -23,7 +24,6 @@ define :firstPart do #This function defines the first part of the Imperial March
   index= 0 #after the 8 notes are played, the variable index will reset to 0
 end
 #I called this function to play 2 times by the function name "firstPart"
-
 2. times do
   firstPart
 end
@@ -31,10 +31,19 @@ sample :bass_woodsy_c
 #the sample sound will play right before the full song plays
 #the live loop "bass" will play infinitely
 live_loop :bass do
-  with_fx :flanger do
+  with_fx :distortion do
     sample :bass_thick_c, cutoff: 70, amp:a
     #the amp variable "a" is going to start off with 0.25 and each time the loop full march goes, it addes 0.125
     sleep 2*s
+  end
+end
+live_loop :drum do
+  with_fx :flanger do
+    r = (rrand 2.5, 9.0)
+    sample :drum_heavy_kick, amp:r
+    print r
+    sleep 1
+    #the amp for the sample will be randomized because it is linked to the variable "r" which will randomly pick a rate value from 2.5 to 9. Then it will print the r value on the log
   end
 end
 #this live loop "fullMarch" will also start playing the same time as the "bass" loop and will play infinitely
@@ -61,12 +70,14 @@ live_loop :fullMarch do
   sleep 4*s
   #at the end of the song, the tom high drum will play
   with_fx :flanger do
-    r = (rrand 0.25, 1.5)
-    sample :drum_tom_hi_hard, rate:r
+    r = (rrand 1.5, 3.5)
+    g= (rrand 1, 4)
+    sample :drum_cymbal_hard, amp:r, sustain:g
     print r
-    #the rate for the sample will be randomized because it is linked to the variable "r" which will randomly pick a rate value from 0.5 to 1. Then it will print the r value on the log
+    #the sustain for the sample will be randomized from the values 1 to 4
+    #the amp for the sample will be randomized because it is linked to the variable "r" which will randomly pick a rate value from 1.5 to 3.5. Then it will print the r value on the log
   end
   sleep 4*s
-  a= a+0.125 #at the end of the loop, the variable "a" will add 0.125 to it making it louder as the loop keeps repeating.
-  print a #the "a" variable will display on the log
+  a= a+0.125
+  #at the end of the loop, the variable "a" will add 0.125 to it making it louder as the loop keeps repeating.
 end
