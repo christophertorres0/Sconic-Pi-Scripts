@@ -3,6 +3,7 @@
 # BPM USED: https://songbpm.com/imperial-march?q=imperial%20march
 use_bpm 95
 father = "C:/Users/koby_wu/Desktop/sonic_pi_challenge_7_custom_samples/father.wav"
+#this variable is the sample sound
 s=0.25
 #the variable "s" is for the sleep codes. This is assigned to each sleep code in the song so I am able to change the sleep time of all at one time and it won't sound weird.
 a= 0.25
@@ -31,7 +32,6 @@ end
 sample :bass_woodsy_c
 #the sample sound will play right before the full song plays
 #the live loop "bass" will play infinitely
-
 live_loop :bass do
   with_fx :distortion do
     sample :bass_thick_c, cutoff: 70, amp:a
@@ -82,7 +82,6 @@ live_loop :fullMarch do
   sleep 4*s
   a= a+0.125
   #at the end of the loop, the variable "a" will add 0.125 to it making it louder as the loop keeps repeating.
-  #the sample is linked to the variable "father" which is the link for the sample sounds
   sample father, amp:7
   sleep 4
 end
