@@ -83,5 +83,5 @@ live_loop :fullMarch do
   a= a+0.125
   #at the end of the loop, the variable "a" will add 0.125 to it making it louder as the loop keeps repeating.
   sample father, amp:7
-  sleep 4
+  sleep 16*s
 end
