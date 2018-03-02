@@ -8,12 +8,12 @@ force = "C:/Users/koby_wu/Desktop/imperialmarch/force.wav"
 obi = "C:/Users/koby_wu/Desktop/imperialmarch/obi.wav"
 withyou= "C:/Users/koby_wu/Desktop/imperialmarch/withyou.wav"
 #these variable are the sample sound
-s=0.25
-#the variable "s" is for the sleep codes. This is assigned to each sleep code in the song so I am able to change the sleep time of all at one time and it won't sound weird.
-a= 0.25
-# the variable "a" is for the amplitude for the assigned samples
+s=0.25 #the variable "s" is for the sleep codes. This is assigned to each sleep code in the song so I am able to change the sleep time of all at one time and it won't sound weird.
+a= 0.25 # the variable "a" is for the amplitude for the assigned samples
 first = [:g4, :g4, :g4, :e4, :b4, :g4, :e4, :b4]
 sleep = [4*s, 4*s, 4*s, 3*s, s, 4*s, 3*s, s]
+full = [:g4, :d5, :d5, :d5,:e5, :b4, :g4, :e4, :b4, :g4]
+full_sleep = [4*s, 4*s, 4*s, 4*s, 3*s, s, 4*s, 3*s, s, 4*s ]
 index= 0
 #this is the values for the play and sleep to play in the function "firstPart"
 #each sleep code is going to be mulitplied by "s" which is 0.25 to get the right sleep time
@@ -56,24 +56,12 @@ end
 live_loop :fullMarch do
   #the function "firstPart" will start playing then the rest of the song will be played
   firstPart
-  play :g4
-  sleep 4*s
-  3. times do
-    play :d5
-    sleep 4*s
+  10. times do
+    play full[index]
+    sleep full_sleep[index]
+    index = index+1
   end
-  play :e5
-  sleep 3*s
-  play :b4
-  sleep s
-  play :g4
-  sleep 4*s
-  play :e4
-  sleep 3*s
-  play :b4
-  sleep s
-  play :g4
-  sleep 4*s
+  index= 0
   #at the end of the song, the tom high drum will play
   with_fx :flanger do
     r = (rrand 1.5, 3.5)
