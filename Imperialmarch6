@@ -2,9 +2,11 @@
 # SHEET MUSIC: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
 # BPM USED: https://songbpm.com/imperial-march?q=imperial%20march
 use_bpm 95
-father = "C:/Users/koby_wu/Desktop/sonic_pi_challenge_7_custom_samples/father.wav"
-luke = "C:/Users/koby_wu/Desktop/sonic_pi_challenge_7_custom_samples/Use The Force Luke.wav"
-force = "C:/Users/koby_wu/Desktop/sonic_pi_challenge_7_custom_samples/force.wav"
+father = "C:/Users/koby_wu/Desktop/imperialmarch/father.wav"
+luke = "C:/Users/koby_wu/Desktop/imperialmarch/Use The Force Luke.wav"
+force = "C:/Users/koby_wu/Desktop/imperialmarch/force.wav"
+obi = "C:/Users/koby_wu/Desktop/imperialmarch/obi.wav"
+withyou= "C:/Users/koby_wu/Desktop/imperialmarch/withyou.wav"
 #these variable are the sample sound
 s=0.25
 #the variable "s" is for the sleep codes. This is assigned to each sleep code in the song so I am able to change the sleep time of all at one time and it won't sound weird.
@@ -82,10 +84,10 @@ live_loop :fullMarch do
     #the amp for the sample will be randomized because it is linked to the variable "r" which will randomly pick a rate value from 1.5 to 3.5. Then it will print the r value on the log
   end
   sleep 4*s
-  sound = [force, father, luke].choose
-  #will randomly play one of the variable clips
+  sound = [force, obi, luke, father, withyou].choose
+  #will randomly choose one of the variable samples to play it
   sample sound, amp:7
-  sleep 16*s
+  sleep 24*s
   a= a+0.125
   #at the end of the loop, the variable "a" will add 0.125 to it making it louder as the loop keeps repeating.
 end
