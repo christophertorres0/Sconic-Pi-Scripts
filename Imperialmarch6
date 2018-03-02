@@ -75,7 +75,7 @@ live_loop :fullMarch do
   sound = [force, obi, luke, father, withyou].choose
   #will randomly choose one of the variable samples to play it
   sample sound, amp:7
-  sleep 24*s
+  sleep 20*s
   a= a+0.125
   #at the end of the loop, the variable "a" will add 0.125 to it making it louder as the loop keeps repeating.
 end
