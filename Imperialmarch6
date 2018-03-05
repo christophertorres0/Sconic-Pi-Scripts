@@ -9,7 +9,7 @@ obi = "C:/Users/koby_wu/Desktop/imperialmarch/obi.wav"
 withyou= "C:/Users/koby_wu/Desktop/imperialmarch/withyou.wav"
 #these variable are the sample sound
 s=0.25 #the variable "s" is for the sleep codes. This is assigned to each sleep code in the song so I am able to change the sleep time of all at one time and it won't sound weird.
-a= 0.25 # the variable "a" is for the amplitude for the assigned samples
+a= 0.125 # the variable "a" is for the amplitude for the assigned samples
 first = [:g4, :g4, :g4, :e4, :b4, :g4, :e4, :b4]
 sleep = [4*s, 4*s, 4*s, 3*s, s, 4*s, 3*s, s]
 full = [:g4, :d5, :d5, :d5,:e5, :b4, :g4, :e4, :b4, :g4]
