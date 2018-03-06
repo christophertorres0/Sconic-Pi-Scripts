@@ -1,0 +1,33 @@
+define :my_player do |n|
+  play n
+end
+my_player 80
+sleep 0.5
+my_player :b1
+
+# another example of repeating
+define :four do |n|
+  4. times do
+    play n
+    sleep 1
+  end
+end
+four 80
+
+#anoter where play n then m
+define :plays do |n, m|
+  play n*2
+  sleep 1
+  play m
+  sleep 1
+end
+plays 40 , 90
+
+#paramertise sleep time too
+define :playsleep do |n,m,k|
+  play n
+  sleep k
+  play m
+  sleep k
+end
+playsleep 80, 30, 1
