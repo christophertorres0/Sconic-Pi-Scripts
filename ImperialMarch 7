@@ -26,7 +26,7 @@ define :firstPart do
   end
   index= 0 #after the 8 notes are played, the variable index will reset to 0
 end
-#this function below is paramized function that is a placeholder for actual values
+#this function below is paramized function that is a placeholder for actual values. It makes my code more efficient because instead of doing 2 lines for play notes and sleep for a certain time, I can combined it to just one line
 define :full_song do |f, t|
   play f
   sleep t
