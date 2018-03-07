@@ -13,8 +13,7 @@ a= 0.25 # the variable "a" is for the amplitude for the assigned samples
 first = [:g4, :g4, :g4, :e4, :b4, :g4, :e4, :b4]
 sleep = [4*s, 4*s, 4*s, 3*s, s, 4*s, 3*s, s]
 index= 0
-#this is the values for the play and sleep to play in the function "firstPart"
-#each sleep code is going to be mulitplied by "s" which is 0.25 to get the right sleep time
+#this is the values for the play and sleep to play in the function "firstPart". Each sleep code is going to be mulitplied by "s" which is 0.25 to get the right sleep time
 #This function below defines the first part of the Imperial March song
 define :firstPart do
   use_synth :prophet
@@ -27,6 +26,7 @@ define :firstPart do
   end
   index= 0 #after the 8 notes are played, the variable index will reset to 0
 end
+#this function below is paramized function that is a placeholder for actual values
 define :full_song do |f, t|
   play f
   sleep t
@@ -58,6 +58,7 @@ end
 live_loop :fullMarch do
   #the function "firstPart" will start playing then the rest of the song will be played
   firstPart
+  # the "full song" is calling that function. The values/arguments of the notes/sleeps are being given after the function name is called. 
   full_song :g4, 4*s
   3. times do
     full_song:d5, 4*s
