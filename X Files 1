@@ -1,0 +1,54 @@
+# NAME OF SONG: X Files by Mark Snow
+# SHEET MUSIC: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0097480
+# BPM USED: https://songbpm.com/x-files?q=x%20files
+use_bpm 88
+use_synth :pulse
+s= 0.33
+
+play :a4
+sleep s
+play :c5
+sleep s
+play :e5
+sleep s
+3. times do
+  play :f5
+  sleep s
+  play :c5
+  sleep s
+  play :e5
+  sleep s
+end
+
+use_synth :piano
+play :a4
+sleep 0.5
+play :e5
+sleep 0.5
+play :d5
+sleep 0.5
+play :e5
+sleep 0.5
+play :g5
+sleep 0.5
+play :e5
+sleep 1
+play :e4
+sleep 1
+play :e4
+sleep 1
+play :a4
+sleep 0.5
+play :e5
+sleep 0.5
+play :d5
+sleep 0.5
+play :e5
+sleep 0.5
+play :g5
+sleep 0.5
+play :e5
+sleep 0.5
+
+
+#sample :drum_cymbal_open
