@@ -4,17 +4,18 @@
 use_bpm 88
 use_synth :pulse
 s= 0.33
-index=0
-first_part_notes =[:a4, :c5, :e5]
-
-define :first_part do
-  3. times do
-    play first_part[index]
-    sleep s
-    index = index+1
+index = 0
+first = [:a4, :c5, :e5]
+define :song do
+  3.times do
+    play first[index]
+    sleep 0.33
+    index=index+1
   end
 end
 
+
+song
 play :f5
 sleep s
 
@@ -22,7 +23,7 @@ play :c5
 sleep s
 play :e5
 sleep s
-use_synth :piano
+use_synth :pulse
 
 play :a4
 sleep 0.5
@@ -37,4 +38,4 @@ sleep 0.5
 play :e5
 sleep 0.5
 
-
+#sample :drum_cymbal_open
