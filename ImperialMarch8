@@ -1,0 +1,96 @@
+# NAME OF SONG: The Imperial March
+# SHEET MUSIC: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0017607
+# BPM USED: https://songbpm.com/imperial-march?q=imperial%20march
+use_bpm 95
+father = "C:/Users/koby_wu/Desktop/imperialmarch/father.wav"
+luke = "C:/Users/koby_wu/Desktop/imperialmarch/Use The Force Luke.wav"
+force = "C:/Users/koby_wu/Desktop/imperialmarch/force.wav"
+obi = "C:/Users/koby_wu/Desktop/imperialmarch/obi.wav"
+withyou = "C:/Users/koby_wu/Desktop/imperialmarch/withyou.wav"
+#these variable are the sample sound
+#make this 16 beats
+s=0.25 #the variable "s" is for the sleep codes. This is assigned to each sleep code in the song so I am able to change the sleep time of all at one time and it won't sound weird.
+a= 0.25 # the variable "a" is for the amplitude for the assigned samples
+first = [:g4, :g4, :g4, :e4, :b4, :g4, :e4, :b4]
+sleep = [4*s, 4*s, 4*s, 3*s, s, 4*s, 3*s, s]
+index= 0
+#this is the values for the play and sleep to play in the function "firstPart". Each sleep code is going to be mulitplied by "s" which is 0.25 to get the right sleep time
+#This function below defines the first part of the Imperial March song
+define :firstPart do
+  use_synth :prophet
+  8. times do
+    play first[index]
+    #"first" is the array with all my notes for the first part of my song. Index is the value of 0 for that variable. I say play the array name then the value or position of the first note which is :g4.
+    sleep sleep[index]
+    index= index+1
+    #my variable "index" will add 1 to the value of index so it would play the next note and sleep time
+  end
+  index= 0 #after the 8 notes are played, the variable index will reset to 0
+end
+define :background do
+  with_fx :flanger do
+    r = (rrand 2.5, 9.0)
+    sample :drum_heavy_kick, amp:r
+    print r
+    sleep 1
+    #the amp for the sample will be randomized because it is linked to the variable "r" which will randomly pick a rate value from 2.5 to 9. Then it will print the r value on the log
+  end
+end
+define :bass do
+  with_fx :distortion do
+    sample :bass_thick_c, cutoff: 70, amp:a
+    #the amp variable "a" is going to start off with 0.25 and each time the loop full march goes, it addes 0.125
+    sleep 2*s
+  end
+end
+#this function below is paramized function that is a placeholder for actual values
+define :full_song do |f, t|
+  play f
+  sleep t
+end
+#I called this function to play 2 times by the function name "firstPart"
+2. times do
+  firstPart
+end
+sample :bass_woodsy_c
+#the sample sound will play right before the full song plays
+#the live loop "bass" will play infinitely
+live_loop :track1 do
+  background
+end
+live_loop :track2 do
+  bass
+end
+
+#this live loop "fullMarch" will also start playing the same time as the "bass" loop and will play infinitely
+live_loop :fullMarch do
+  #the function "firstPart" will start playing then the rest of the song will be played
+  firstPart
+  # the "full song" is calling that function. The values/arguments of the notes/sleeps are being given after the function name is called.
+  full_song :g4, 4*s
+  3. times do
+    full_song:d5, 4*s
+  end
+  full_song :e5, 3*s
+  full_song :b4, s
+  full_song :g4, 4*s
+  full_song :e4, 3*s
+  full_song :b4, s
+  full_song :g4, 4*s
+  #at the end of the song, the tom high drum will play
+  with_fx :flanger do
+    r = (rrand 1.5, 3.5)
+    g= (rrand 1, 2)
+    sample :drum_cymbal_hard, amp:r, sustain:g
+    print r
+    #the sustain for the sample will be randomized from the values 1 to 4
+    #the amp for the sample will be randomized because it is linked to the variable "r" which will randomly pick a rate value from 1.5 to 3.5. Then it will print the r value on the log
+  end
+  sleep 4*s
+  sound = [force, obi, luke, father, withyou].choose
+  #will randomly choose one of the variable samples to play it
+  sample sound, amp:8
+  sleep 20*s
+  a= a+0.125
+  #at the end of the loop, the variable "a" will add 0.125 to it making it louder as the loop keeps repeating.
+end
