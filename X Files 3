@@ -1,0 +1,79 @@
+# NAME OF SONG: X Files by Mark Snow
+# SHEET MUSIC: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0097480
+#Youtube Video:
+# BPM USED: https://songbpm.com/x-files?q=x%20files
+use_bpm 88
+use_synth :saw
+s= 0.33
+t= 0.5
+index = 0
+first = [:a3, :c4, :e4, :f4]
+# 8 beats
+define :firstPart do
+  sleep 2
+  1.times do
+    4.times do
+      play first[index]
+      sleep 0.25
+      index=index+1
+    end
+    index=0
+  end
+  sleep 0.5
+  3.times do
+    play :a4
+    sleep 0.5
+  end
+  sleep 3
+end
+
+define :ending do
+  sleep 5.5
+  play :a4
+  sleep t
+  play :e5
+  sleep t
+  play :d5
+  sleep t
+  play :e5
+  sleep t
+  play :g5
+  sleep t
+  play :e5, sustain:1
+end
+define :cymbal do
+  sleep 13.5
+  sample :drum_cymbal_hard, amp:1
+  sleep 1.5
+end
+define :background do
+  sample #put a sample of rain or thunder starting
+end
+define :bass do
+  with_fx :distortion do
+    sample :bass_thick_c, cutoff: 50
+    sleep 1
+  end
+end
+
+live_loop :track1 do
+  bass
+end
+live_loop :track2 do
+  sync :track1
+  firstPart
+end
+live_loop :track3 do
+  sync :track1
+  ending
+end
+live_loop :track4 do
+  sync :track1
+  cymbal
+end
+live_loop :track5 do
+  sync :track1
+  background
+end
+
+#have the piano play 3 different parts randomly choose a function that has the notes in parameterized 
