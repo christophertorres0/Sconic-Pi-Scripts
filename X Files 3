@@ -1,34 +1,33 @@
 # NAME OF SONG: X Files by Mark Snow
 # SHEET MUSIC: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0097480
-#Youtube Video:
 # BPM USED: https://songbpm.com/x-files?q=x%20files
+
 use_bpm 88
-use_synth :saw
+use_synth :pulse
 s= 0.33
 t= 0.5
 index = 0
 first = [:a3, :c4, :e4, :f4]
-# 8 beats
 define :firstPart do
   sleep 2
   1.times do
     4.times do
-      play first[index]
-      sleep 0.25
+      play first[index] #Number 10, this will play the array by calling the function "first" and starting with the index number 0. then it will sleep and add 1 to index so it can play the next note
+      sleep s #Number 8 uses the variable s as the sleep time
       index=index+1
     end
     index=0
   end
-  sleep 0.5
-  3.times do
+  sleep t
+  3.times do #Number 5, this note is in a loop so I don't have to keep repeating the same note 3 times
     play :a4
-    sleep 0.5
+    sleep t
   end
-  sleep 3
+  sleep 5
 end
 
-define :ending do
-  sleep 5.5
+define :ending1 do
+  sleep 7
   play :a4
   sleep t
   play :e5
@@ -41,20 +40,63 @@ define :ending do
   sleep t
   play :e5, sustain:1
 end
-define :cymbal do
-  sleep 13.5
-  sample :drum_cymbal_hard, amp:1
-  sleep 1.5
+define :ending2 do
+  sleep 7
+  play :a4
+  sleep t
+  play :e5
+  sleep t
+  play :d5
+  sleep t
+  play :e5
+  sleep t
+  play :a5
+  sleep t
+  play :e5, sustain:1
 end
+define :ending3 do
+  sleep 7
+  play :c6
+  sleep t
+  play :b5
+  sleep t
+  play :a5
+  sleep t
+  play :g5
+  sleep t
+  play :a5
+  sleep t
+  play :e5, sustain:1
+end
+define :ending do
+  ending_notes = [ending1, ending2, ending3].choose
+  ending_notes
+end
+
 define :background do
   sample #put a sample of rain or thunder starting
 end
 define :bass do
-  with_fx :distortion do
-    sample :bass_thick_c, cutoff: 50
-    sleep 1
-  end
+  play :c2, amp:0.5
+  sleep 0.25
+  play :c2, amp:0.5
+  sleep 2
+  play :e2, amp:0.5
+  sleep 0.75
+  play :f2, amp:0.5
+  sleep 1
 end
+define :hihat do
+  sample :drum_cymbal_closed
+  sleep 0.5
+  sample :drum_cymbal_pedal
+  sleep 1
+end
+
+2. times do
+  firstPart
+end
+
 
 live_loop :track1 do
   bass
@@ -65,15 +107,14 @@ live_loop :track2 do
 end
 live_loop :track3 do
   sync :track1
-  ending
+  #ending
 end
 live_loop :track4 do
   sync :track1
-  cymbal
+  #hihat
 end
 live_loop :track5 do
   sync :track1
-  background
+  #background
 end
-
-#have the piano play 3 different parts randomly choose a function that has the notes in parameterized 
+#have the piano play 3 different parts randomly choose a function that has the notes in parameterized
