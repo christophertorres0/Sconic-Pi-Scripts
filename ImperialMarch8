@@ -64,7 +64,8 @@ define :ending_notes do
   end
   full_song :e5, 3*s
   full_song :b4, s
-  full_song :g4, 4*s
+
+full_song :g4, 4*s
   full_song :e4, 3*s
   full_song :b4, s
   full_song :g4, 4*s
@@ -87,9 +88,11 @@ define :vocal do
   sample sound, amp:8
 end
 
+#Number 6, this melody will play by itself for 2 times then I will let the other tracks play that are in the live loop
+melody
 #Below is Number 7 where my functions are actually playing concurrently
 live_loop :track1 do
-  melody #Number 6, this melody will play by itself for 2 times then I will let the other tracks play
+  melody 
 end
 live_loop :track2 do
   #background
