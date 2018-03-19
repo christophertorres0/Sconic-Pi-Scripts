@@ -1,0 +1,132 @@
+# NAME OF SONG: X Files by Mark Snow
+# SHEET MUSIC: https://www.musicnotes.com/sheetmusic/mtd.asp?ppn=MN0097480
+# BPM USED: https://songbpm.com/x-files?q=x%20files
+
+use_bpm 88
+use_synth :pulse
+s= 0.33 #Number 8,the variable "s" is for the sleep codes. This is assigned to the sleep codes of the x file melody.
+t= 0.5 #Number 8,the variable "t" is for the sleep codes. This is assigned to each sleep code in the song so I am able to change the sleep time of all at one time and it won't sound weird.
+a=0.5 #Number 8, this variable is for the amp value for the bass track
+index = 0
+first = [:a3, :c4, :e4, :f4]
+wind = "C:/Users/koby_wu/Desktop/xfiles/rename.wav"
+#Number 13, below is all the functions where the track code is placed.
+define :firstPart do
+  sleep 2
+  1.times do
+    4.times do
+      play first[index] #Number 10, this will play the array by calling the function "first" and starting with the index number 0. then it will sleep and add 1 to index so it can play the next note
+      sleep s #Number 8 uses the variable s as the sleep time
+      index=index+1
+    end
+    index=0 #after the loop ends, index value is set to 0 so it can repeat the same melody
+  end
+  sleep t
+  3.times do #Number 5, this note is in a loop so I don't have to keep repeating the same note 3 times
+    play :a4
+    sleep t
+  end
+  sleep 3
+end
+define :endingNotes do |f, t|
+  play f
+  sleep t
+end
+define :ending1 do
+  sleep 6
+  #Number 14 below I am using parameterized function to make my code more effiecent by calling the "endingNotes" function and calling the notes/sleep
+  endingNotes :a4, t
+  endingNotes :e5, t
+  endingNotes :d5, t
+  endingNotes :e5, t
+  endingNotes :g5, t
+  endingNotes :e5, t
+end
+define :ending2 do
+  sleep 6
+  endingNotes :a4, t
+  endingNotes :e5, t
+  endingNotes :d5, t
+  endingNotes :e5, t
+  endingNotes :a5, t
+  endingNotes :e5, t
+end
+define :ending3 do
+  sleep 6
+  endingNotes :c6, t
+  endingNotes :b5, t
+  endingNotes :a5, t
+  endingNotes :g5, t
+  endingNotes :a5, t
+  endingNotes :e5, t
+end
+define :ending do
+  #Number 11, this function will randomly chose a function name to play a different set of notes.
+  ending_notes = [ending1, ending2, ending3].choose
+  ending_notes
+end
+
+define :background do
+  sample wind, amp:6
+end
+define :bass do
+  2. times do
+    play :c2, amp:a
+    sleep 0.25
+    play :c2, amp:a
+    sleep 2
+    play :e2, amp:a
+    sleep 0.75
+    play :f2, amp:a
+    sleep 1
+  end
+  a= a+0.25 #Number 9, after the bass song repeats 4 times, the amp (sound level) value increases 0.25.
+end
+define :hihat do
+  sample :drum_cymbal_closed
+  sleep 0.5
+  sample :drum_cymbal_pedal
+  sleep 1
+end
+#Number 6, the melody will play before the rest of the tracks play
+
+#Number 7, Below is where my functions are actually playing
+live_loop :track1 do
+  firstPart
+end
+live_loop :track2 do
+  sync :track1
+  bass
+end
+live_loop :track3 do
+  sync :track1
+  ending
+end
+live_loop :track4 do
+  sync :track1
+  hihat
+end
+live_loop :track5 do
+  sync :track1
+  background
+end
+
+#Below is where I will stop the functions from play and then transition to the next song
+=begin
+live_loop :track1 do
+  stop
+end
+live_loop :track2 do
+  stop
+end
+live_loop :track3 do
+  stop
+end
+live_loop :track4 do
+  stop
+end
+live_loop :track5 do
+  stop
+end
+=end
+#need custom sample number 12
