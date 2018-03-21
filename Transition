@@ -1,0 +1,30 @@
+#transition song
+#all my tracks are in live loops so they all play at the same time
+live_loop :bass do
+  sample :bass_woodsy_c #this will play first then the bass_thick_c will play after then keep looping
+  with_fx :distortion do
+    sample :bass_thick_c, cutoff: 70
+    sleep 0.5
+  end
+end
+live_loop :drums do
+  sample :drum_heavy_kick
+  sleep 1
+end
+live_loop :hihat do
+  sample :drum_cymbal_closed
+  sleep 1
+end
+
+#after 20 seconds I am going to stop these live loops with the code below
+=begin
+live_loop :bass do
+  stop
+end
+live_loop :drums do
+  stop
+end
+live_loop :hihat do
+  stop
+end
+=end
