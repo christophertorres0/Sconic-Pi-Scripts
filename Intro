@@ -1,0 +1,43 @@
+#Intro of Setlist
+#Song is from BTS's DNA
+use_bpm 130
+s= 0.5 #this variable is used for the sleep time 
+vocal  ="C:/Users/koby_wu/Desktop/transition/vocal.wav"
+sample :ambi_choir
+with_fx :reverb, mix: 0.4 do
+  with_fx :echo, mix: 0.7 do
+    sample :ambi_swoosh, amp: 2
+    sleep 3
+    sample :ambi_lunar_land, rate: 2
+    sleep 1
+  end
+end
+2.times do
+  2. times do #this will play 2 times in a loop
+    play :c5
+    sleep s
+    play :b4
+    sleep s
+    play :c5
+    sleep s
+    play :c5
+    sleep s*3
+    play :g5
+    sleep s
+    play :a5
+    sleep s
+    play :b5
+    sleep s
+    play :a5
+    sleep s
+    play :g5, sustain:0.5
+    sleep 2
+  end
+  sample vocal, amp:3 #the sample will be called from the variable vocals 
+  sleep 4
+end
+sleep 2
+5. times do #this will play right after the melody and then I will transition to the first custom song
+  play :g5
+  sleep 2
+end
