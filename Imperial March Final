@@ -3,10 +3,8 @@
 # BPM USED: https://songbpm.com/imperial-march?q=imperial%20march
 use_bpm 95
 father = "C:/Users/koby_wu/Desktop/imperialmarch/father.wav"
-luke = "C:/Users/koby_wu/Desktop/imperialmarch/Use The Force Luke.wav"
-force = "C:/Users/koby_wu/Desktop/imperialmarch/force.wav"
-obi = "C:/Users/koby_wu/Desktop/imperialmarch/obi.wav"
 withyou = "C:/Users/koby_wu/Desktop/imperialmarch/withyou.wav"
+luke ="C:/Users/koby_wu/Desktop/imperialmarch/Use The Force Luke.wav"
 #Number 12, these variable are the sample sounds that I have customly made.
 s=0.25 #Number 8,the variable "s" is for the sleep codes. This is assigned to each sleep code in the song so I am able to change the sleep time of all at one time and it won't sound weird.
 a= 0.25 #Number 8,the variable "a" is for the amplitude for the assigned samples
@@ -88,9 +86,11 @@ define :cymbal do
 end
 define :vocal do
   sleep 13
-  sound = [force, obi, luke, father, withyou].choose
+  vocal = [withyou, father, luke]
+  sound =choose(vocal)
   # Number 11, will randomly choose one of the variable samples to play it
   sample sound, amp:8
+  print sound
 end
 
 
@@ -100,23 +100,23 @@ live_loop :track1 do
 end
 live_loop :track2 do
   sync :track1
-  background
+  #background
 end
 live_loop :track3 do
   sync :track1
-  ending_notes
+  #ending_notes
 end
 live_loop :track4 do
   sync :track1
-  bass
+  #bass
 end
 live_loop :track5 do
   sync :track1
-  cymbal
+  #cymbal
 end
 live_loop :track6 do
   sync :track1
-  vocal
+  #vocal
 end
 
 
@@ -139,5 +139,5 @@ live_loop :track5 do
 end
 live_loop :track6 do
   stop
-end
 =end
+
