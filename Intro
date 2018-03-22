@@ -1,0 +1,32 @@
+#Intro song Night Changes and Best Song Ever by One Direction
+s= 0.25
+#Number 14, these 2 function below is paramized function that is a placeholder for actual values
+define :nc do |f, t|
+  play f
+  sleep t
+end
+define :bse do |n1, n2, n3, r|
+  play n1
+  play n2
+  play n3
+  sleep r
+end
+#this play 5 times (this is night changes by One Direction)
+5. times do
+  nc :d4, s
+  nc :g3, s
+  nc :a3, s
+  nc :g3, s
+end
+#this plays 2 times (Best Song Ever by One Direction)
+2. times do
+  bse :c4, :f4, :a4, s*4
+  bse :c4, :f4, :g4, s*2
+  bse :c4, :d4, :g4, s*8
+end
+bse :c4, :f4, :a4, s*4
+bse :c4, :f4, :g4, s*2
+play :c4, sustain:3
+play :d4, sustain:3
+play :g4, sustain:3
+sleep s*12
