@@ -86,8 +86,8 @@ define :cymbal do
 end
 define :vocal do
   sleep 13
-  vocal = [withyou, father, luke]
-  sound =choose(vocal)
+  vocals = [withyou, father, luke]
+  sound =choose(vocals)
   # Number 11, will randomly choose one of the variable samples to play it
   sample sound, amp:8
   print sound
@@ -104,7 +104,7 @@ live_loop :track2 do
 end
 live_loop :track3 do
   sync :track1
-  #ending_notes
+  #vocal
 end
 live_loop :track4 do
   sync :track1
@@ -116,7 +116,7 @@ live_loop :track5 do
 end
 live_loop :track6 do
   sync :track1
-  #vocal
+  #ending_notes
 end
 
 
