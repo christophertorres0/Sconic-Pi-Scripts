@@ -25,10 +25,6 @@ define :notes do
   end
   index= 0 #after the 8 notes are played, the variable index will reset to 0
 end
-define :melody do
-  notes
-  #sleep 10
-end
 define :background do
   16. times do
     with_fx :flanger do
@@ -95,7 +91,7 @@ end
 
 #Below is Number 7 where my functions are actually playing concurrently
 live_loop :track1 do
-  melody #Number 6, this melody will play by itself for 2 times then I will let the other tracks play that are in the live loop
+ notes #Number 6, this melody will play by itself for 2 times then I will let the other tracks play that are in the live loop
 end
 live_loop :track2 do
   sync :track1
