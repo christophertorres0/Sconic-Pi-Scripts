@@ -101,15 +101,15 @@ live_loop :track2 do
 end
 live_loop :track3 do
   sync :track1
-  #ending
+  #background
 end
 live_loop :track4 do
   sync :track1
-  #hihat
+  #ending
 end
 live_loop :track5 do
   sync :track1
-  #background
+  #hihat
 end
 live_loop :track6 do
   sync :track1
