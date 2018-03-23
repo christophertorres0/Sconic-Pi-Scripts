@@ -13,8 +13,7 @@ wind = "C:/Users/koby_wu/Desktop/xfiles/wind.wav"
 breathing = "C:/Users/koby_wu/Desktop/xfiles/breathing.wav"
 #Number 13, below is all the functions where the track code is placed.
 define :firstPart do
-  sleep 4*t
-  1.times do
+  sleep 4*s
     4.times do
       play first[index] #Number 10, this will play the array by calling the function "first" and starting with the index number 0. then it will sleep and add 1 to index so it can play the next note
       sleep s #Number 8 uses the variable s as the sleep time
@@ -28,7 +27,6 @@ define :firstPart do
     sleep t
   end
   sleep 6*t
-end
 define :endingNotes do |f, t|
   play f
   sleep t
