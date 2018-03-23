@@ -71,7 +71,6 @@ define :ending_notes do
   full_song :e4, 3*s
   full_song :b4, s
   full_song :g4, 4*s
-  sleep 2
 end
 define :cymbal do
   sleep 13
@@ -86,8 +85,8 @@ define :cymbal do
 end
 define :vocal do
   sleep 13
-  vocals = [withyou, father, luke]
-  sound =choose(vocals)
+  vocal = [withyou, father, luke]
+  sound =choose(vocal)
   # Number 11, will randomly choose one of the variable samples to play it
   sample sound, amp:8
   print sound
@@ -104,19 +103,19 @@ live_loop :track2 do
 end
 live_loop :track3 do
   sync :track1
-  #vocal
+  ending_notes
 end
 live_loop :track4 do
   sync :track1
-  #bass
+  bass
 end
 live_loop :track5 do
   sync :track1
-  #cymbal
+  cymbal
 end
 live_loop :track6 do
   sync :track1
-  #ending_notes
+  vocal
 end
 
 
