@@ -99,19 +99,19 @@ live_loop :track2 do
 end
 live_loop :track3 do
   sync :track1
-  ending_notes
+  #ending_notes
 end
 live_loop :track4 do
   sync :track1
-  bass
+  #bass
 end
 live_loop :track5 do
   sync :track1
-  cymbal
+  #cymbal
 end
 live_loop :track6 do
   sync :track1
-  vocal
+  #vocal
 end
 
 
